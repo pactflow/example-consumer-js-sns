@@ -2,7 +2,7 @@
   "name": "product-service",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "src/service/product.js",
   "scripts": {
     "start": "node server.js",
     "test": "npx jest --silent --reporters=default --testTimeout 30000",
@@ -11,11 +11,9 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "faker": "^4.1.0"
   },
   "devDependencies": {
     "@pact-foundation/pact": "^9.9.12",
-    "aws-sdk": "^2.783.0",
     "dotenv": "^8.2.0",
     "eslint": "^6.8.0",
     "jest": "^25.4.0"
