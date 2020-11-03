@@ -1,12 +1,12 @@
-const handler = require("../../src/product/product.handler");
+const service = require("../../src/product/product.service");
 
 describe("lambda function integrated test", function () {
   it("consumes a valid SNS event", async () => {
     // Arrange
     // First we want mock out the actual low level handling code
     // we want to test the lambda interface here is plumbed correctly to the implementation code
-    const spy = jest.spyOn(handler, "handler");
-    const { lambda } = require("../../src/service/product");
+    const spy = jest.spyOn(service, "receiveProductUpdate");
+    const { handler } = require("../../src/lambda/product");
 
     // This is an example SNS message we can use to test the interface
     const payload = {
@@ -43,7 +43,7 @@ describe("lambda function integrated test", function () {
     };
 
     // Act: call the actual lambda with a valid SNS message
-    const res = await lambda(payload);
+    const res = await handler(payload);
 
     // Assert: check that the implementation code was invoked
     // if it gets here, it also meant it didn't encounter any issues

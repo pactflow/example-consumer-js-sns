@@ -3,7 +3,7 @@ const {
   MessageConsumerPact,
   asynchronousBodyHandler,
 } = require("@pact-foundation/pact");
-const { handler } = require("../../../src/product/product.handler");
+const { receiveProductUpdate } = require("../../../src/product/product.service");
 const { like, term } = Matchers;
 
 const path = require("path");
@@ -36,7 +36,7 @@ describe("product event handler", () => {
           "content-type": "application/json",
           topic: "products",
         })
-        .verify(asynchronousBodyHandler(handler));
+        .verify(asynchronousBodyHandler(receiveProductUpdate));
     });
   });
 });
