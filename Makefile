@@ -59,6 +59,9 @@ can_i_deploy: .env
 	  --retry-while-unknown 0 \
 	  --retry-interval 10
 
+deploy_app:
+	@echo "Deploying to production"
+
 record_deployment: .env
 	@"${PACT_CLI}" broker record-deployment --pacticipant ${PACTICIPANT} --version ${GIT_COMMIT} --environment production
 
