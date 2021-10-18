@@ -5,7 +5,7 @@ GITHUB_WEBHOOK_UUID := "c76b601e-d66a-4eb1-88a4-6ebc50c0df8b"
 PACT_CLI="docker run --rm -v ${PWD}:${PWD} -e PACT_BROKER_BASE_URL -e PACT_BROKER_TOKEN pactfoundation/pact-cli:latest"
 
 # Only deploy from master
-ifeq ($(TRAVIS_BRANCH),master)
+ifeq ($(GIT_BRANCH),master)
 	DEPLOY_TARGET=deploy
 else
 	DEPLOY_TARGET=no_deploy
@@ -24,13 +24,13 @@ ci: test publish_pacts can_i_deploy $(DEPLOY_TARGET)
 # Use this for quick feedback when playing around with your workflows.
 fake_ci: .env
 	CI=true \
-	TRAVIS_COMMIT=`git rev-parse --short HEAD`+`date +%s` \
-	TRAVIS_BRANCH=`git rev-parse --abbrev-ref HEAD` \
+	GIT_COMMIT=`git rev-parse --short HEAD`+`date +%s` \
+	GIT_BRANCH=`git rev-parse --abbrev-ref HEAD` \
 	make ci
 
 
 publish_pacts: .env
-	@"${PACT_CLI}" publish ${PWD}/pacts --consumer-app-version ${TRAVIS_COMMIT} --tag ${TRAVIS_BRANCH}
+	@"${PACT_CLI}" publish ${PWD}/pacts --consumer-app-version ${GIT_COMMIT} --tag ${GIT_BRANCH}
 
 ## =====================
 ## Build/test tasks
@@ -54,7 +54,7 @@ no_deploy:
 can_i_deploy: .env
 	@"${PACT_CLI}" broker can-i-deploy \
 	  --pacticipant ${PACTICIPANT} \
-	  --version ${TRAVIS_COMMIT} \
+	  --version ${GIT_COMMIT} \
 	  --to-environment production \
 	  --retry-while-unknown 0 \
 	  --retry-interval 10
