@@ -7,11 +7,16 @@ const handler = async (event) => {
   console.info(event);
 
   // Read the SNS message and pass the contents to the actual message handler
-  const results = event.Records.map((e) => receiveProductUpdate(JSON.parse(e.Sns.Message)));
+  const updates = event.Records.map((e) =>
+    receiveProductUpdate(JSON.parse(e.Sns.Message))
+  );
 
-  return Promise.all(results);
+  const results = await Promise.all(updates);
+
+  // Return the current size of the repository
+  return results[results.length - 1].size;
 };
 
 module.exports = {
-  handler
+  handler,
 };

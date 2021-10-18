@@ -43,7 +43,10 @@ test: .env
 ## Deploy tasks
 ## =====================
 
-deploy: deploy_app tag_as_prod
+create_environment:
+	@"${PACT_CLI}" broker create-environment --name production --production
+
+deploy: deploy_app record_deployment
 
 no_deploy:
 	@echo "Not deploying as not on master branch"
@@ -52,15 +55,12 @@ can_i_deploy: .env
 	@"${PACT_CLI}" broker can-i-deploy \
 	  --pacticipant ${PACTICIPANT} \
 	  --version ${TRAVIS_COMMIT} \
-	  --to prod \
+	  --to-environment production \
 	  --retry-while-unknown 0 \
 	  --retry-interval 10
 
-deploy_app:
-	@echo "Deploying to prod"
-
-tag_as_prod: .env
-	@"${PACT_CLI}" broker create-version-tag --pacticipant ${PACTICIPANT} --version ${TRAVIS_COMMIT} --tag prod
+record_deployment: .env
+	@"${PACT_CLI}" broker record-deployment --pacticipant ${PACTICIPANT} --version ${GIT_COMMIT} --environment production
 
 ## =====================
 ## Pactflow set up tasks
@@ -93,17 +93,6 @@ create_or_update_github_webhook:
 
 test_github_webhook:
 	@curl -v -X POST ${PACT_BROKER_BASE_URL}/webhooks/${GITHUB_WEBHOOK_UUID}/execute -H "Authorization: Bearer ${PACT_BROKER_TOKEN}"
-
-## ======================
-## Travis CI set up tasks
-## ======================
-
-travis_login:
-	@docker run --rm -v ${HOME}/.travis:/root/.travis -it lirantal/travis-cli login --pro
-
-# Requires PACT_BROKER_TOKEN to be set
-travis_encrypt_pact_broker_token:
-	@docker run --rm -v ${HOME}/.travis:/root/.travis -v ${PWD}:${PWD} --workdir ${PWD} lirantal/travis-cli encrypt --pro PACT_BROKER_TOKEN="${PACT_BROKER_TOKEN}"
 
 ## ======================
 ## Misc

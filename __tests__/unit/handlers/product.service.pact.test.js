@@ -3,7 +3,9 @@ const {
   MessageConsumerPact,
   asynchronousBodyHandler,
 } = require("@pact-foundation/pact");
-const { receiveProductUpdate } = require("../../../src/product/product.service");
+const {
+  receiveProductUpdate,
+} = require("../../../src/product/product.service");
 const { like, term } = Matchers;
 
 const path = require("path");
