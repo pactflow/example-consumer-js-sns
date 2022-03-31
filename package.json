@@ -12,7 +12,7 @@
     "logs": "sam logs -n ProductEventHandler --stack-name pactflow-example-consumer-js-sns -t"
   },
   "devDependencies": {
-    "@pact-foundation/pact": "^9.9.12",
+    "@pact-foundation/pact": "^9.17.3",
     "eslint": "^6.8.0",
     "jest": "^25.4.0"
   },
