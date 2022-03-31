@@ -5,7 +5,7 @@
   "main": "src/service/product.js",
   "scripts": {
     "start": "node server.js",
-    "test": "npx jest --silent --reporters=default --testTimeout 30000",
+    "test": "jest --silent --reporters=default --testTimeout 30000",
     "test:integration": "sam local invoke ProductEventHandler --event  ./__tests__/events/update.json",
     "deploy": "./scripts/deploy.sh",
     "publish": "./scripts/publish.sh",

@@ -1,10 +1,12 @@
 # Example Node AWS SNS Consumer
 
-[![Build Status](https://travis-ci.com/pactflow/example-consumer-js-sns.svg?branch=master)](https://travis-ci.com/pactflow/example-consumer-js-sns)
+[![Build Status](https://github.com/pactflow/example-consumer-js-sns/actions/workflows/build.yml/badge.svg)](https://github.com/pactflow/example-consumer-js-sns/actions)
 
-[![Pact Status](https://test.pactflow.io/pacts/provider/pactflow-example-provider-js-sns/consumer/pactflow-example-consumer-js-sns/latest/badge.svg?label=consumer)](https://test.pactflow.io/pacts/provider/pactflow-example-provider-js-sns/consumer/pactflow-example-consumer-js-sns/latest) (latest pact)
+[![Can I deploy Status](https://testdemo.pactflow.io/pacticipants/pactflow-example-consumer-js-sns/branches/master/latest-version/can-i-deploy/to-environment/production/badge.svg)](https://testdemo.pactflow.io/pacticipants/pactflow-example-consumer-js-sns/branches/master/latest-version/can-i-deploy/to-environment/production/badge)
 
-[![Pact Status](https://test.pactflow.io/matrix/provider/pactflow-example-provider-js-sns/latest/prod/consumer/pactflow-example-consumer-js-sns/latest/prod/badge.svg?label=consumer)](https://test.pactflow.io/pacts/provider/pactflow-example-provider-js-sns/consumer/pactflow-example-consumer-js-sns/latest/prod) (prod/prod pact)
+[![Pact Status](https://testdemo.pactflow.io/pacts/provider/pactflow-example-provider-js-sns/consumer/pactflow-example-consumer-js-sns/latest/badge.svg?label=consumer)](https://testdemo.pactflow.io/pacts/provider/pactflow-example-provider-js-sns/consumer/pactflow-example-consumer-js-sns/latest) (latest pact)
+
+[![Pact Status](https://testdemo.pactflow.io/matrix/provider/pactflow-example-provider-js-sns/latest/prod/consumer/pactflow-example-consumer-js-sns/latest/prod/badge.svg?label=consumer)](https://testdemo.pactflow.io/pacts/provider/pactflow-example-provider-js-sns/consumer/pactflow-example-consumer-js-sns/latest/prod) (prod/prod pact)
 
 This is an example of a NodeJS AWS SNS consumer that uses Pact, [Pactflow](https://pactflow.io) and Travis CI to ensure that it is compatible with the expectations its consumers have of it.
 
