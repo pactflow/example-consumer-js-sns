@@ -5,14 +5,14 @@
   "main": "src/service/product.js",
   "scripts": {
     "start": "node server.js",
-    "test": "npx jest --silent --reporters=default --testTimeout 30000",
+    "test": "jest --silent --reporters=default --testTimeout 30000",
     "test:integration": "sam local invoke ProductEventHandler --event  ./__tests__/events/update.json",
     "deploy": "./scripts/deploy.sh",
     "publish": "./scripts/publish.sh",
     "logs": "sam logs -n ProductEventHandler --stack-name pactflow-example-consumer-js-sns -t"
   },
   "devDependencies": {
-    "@pact-foundation/pact": "^9.9.12",
+    "@pact-foundation/pact": "^9.17.3",
     "eslint": "^6.8.0",
     "jest": "^25.4.0"
   },
