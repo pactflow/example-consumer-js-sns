@@ -9,3 +9,27 @@
 6. Add PactBroker config
 7. Update Provider side
 8. Show delta between pact ruby core and pact rust core generated Pact files.
+
+## Consumer side testing
+
+```sh
+git clone git@github.com:pactflow/example-consumer-js-sns.git
+cd example-consumer-js-sns
+npm install
+npm run test
+docker compose up -d
+npm run pact:publish
+```
+
+## Provider side verification
+
+```sh
+cd ..
+git clone git@github.com:pactflow/example-provider-js-sns.git
+cd example-provider-js-sns
+npm install
+PACT_URL=$PWD/../example-consumer-js-sns/pacts/pactflow-example-consumer-js-sns-pactflow-example-provider-js-sns.json make test
+PACT_BROKER_BASE_URL=http://localhost:8000 make test
+PACT_BROKER_BASE_URL=http://localhost:8000 PACT_PUBLISH_VERIFICATION_RESULTS=true make test
+PACT_BROKER_BASE_URL=http://localhost:8000 PACT_PUBLISH_VERIFICATION_RESULTS=true PACT_LOG_LEVEL=debug make test
+```
