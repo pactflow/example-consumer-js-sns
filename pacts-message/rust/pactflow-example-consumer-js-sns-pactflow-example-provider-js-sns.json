@@ -1,0 +1,73 @@
+{
+  "consumer": {
+    "name": "pactflow-example-consumer-js-sns"
+  },
+  "messages": [
+    {
+      "contents": {
+        "event": "UPDATED",
+        "id": "some-uuid-1234-5678",
+        "name": "Some Product",
+        "type": "Product Range"
+      },
+      "description": "a product event update",
+      "matchingRules": {
+        "body": {
+          "$.event": {
+            "combine": "AND",
+            "matchers": [
+              {
+                "match": "regex",
+                "regex": "^(CREATED|UPDATED|DELETED)$"
+              }
+            ]
+          },
+          "$.id": {
+            "combine": "AND",
+            "matchers": [
+              {
+                "match": "type"
+              }
+            ]
+          },
+          "$.name": {
+            "combine": "AND",
+            "matchers": [
+              {
+                "match": "type"
+              }
+            ]
+          },
+          "$.type": {
+            "combine": "AND",
+            "matchers": [
+              {
+                "match": "type"
+              }
+            ]
+          }
+        }
+      },
+      "metadata": {
+        "content-type": "application/json",
+        "contentType": "application/json",
+        "topic": "products"
+      }
+    }
+  ],
+  "metadata": {
+    "pact-js": {
+      "version": "12.1.0"
+    },
+    "pactRust": {
+      "ffi": "0.4.9",
+      "models": "1.1.11"
+    },
+    "pactSpecification": {
+      "version": "3.0.0"
+    }
+  },
+  "provider": {
+    "name": "pactflow-example-provider-js-sns"
+  }
+}

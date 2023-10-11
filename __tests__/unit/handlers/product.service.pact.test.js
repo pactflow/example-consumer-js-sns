@@ -35,7 +35,6 @@ describe("product event handler", () => {
           }),
         })
         .withMetadata({
-          "content-type": "application/json",
           topic: "products",
         })
         .verify(asynchronousBodyHandler(receiveProductUpdate));
