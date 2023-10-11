@@ -14,7 +14,7 @@ describe("product event handler", () => {
   const messagePact = new MessageConsumerPact({
     consumer: "pactflow-example-consumer-js-sns",
     dir: path.resolve(process.cwd(), "pacts"),
-    pactfileWriteMode: "update",
+    pactfileWriteMode: "merge",
     provider: process.env.PACT_PROVIDER
       ? process.env.PACT_PROVIDER
       : "pactflow-example-provider-js-sns",
