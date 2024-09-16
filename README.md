@@ -1,4 +1,4 @@
-# Example Node AWS SNS Consumer
+# Example NodeJS AWS SNS Consumer
 
 [![Build Status](https://github.com/pactflow/example-consumer-js-sns/actions/workflows/build.yml/badge.svg)](https://github.com/pactflow/example-consumer-js-sns/actions)
 
