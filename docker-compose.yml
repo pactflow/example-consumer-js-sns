@@ -2,7 +2,7 @@ version: "3"
 
 services:
   pact-broker:
-    image: pactfoundation/pact-broker:latest-multi
+    image: pactfoundation/pact-broker:latest-multi@sha256:5261a9ee7176d76d77d19d3781be67827b231bed353c2cc2aacafb5eb5a6ee70
     links:
       - postgres
     ports:
@@ -18,7 +18,7 @@ services:
       PACT_BROKER_DATABASE_CONNECT_MAX_RETRIES: "10"
       PACT_BROKER_PUBLIC_HEARTBEAT: "true"
   postgres:
-    image: postgres
+    image: postgres@sha256:6e3358e46e34dae6c184f48fd06fe1b3dbf958ad5b83480031907e52b9ec2a7d
     healthcheck:
       test: psql postgres --command "select 1" -U postgres
     ports:
