@@ -18,7 +18,7 @@ services:
       PACT_BROKER_DATABASE_CONNECT_MAX_RETRIES: "10"
       PACT_BROKER_PUBLIC_HEARTBEAT: "true"
   postgres:
-    image: postgres@sha256:20b542a43252d23f8da074dc952a65c63fc4b412cedb75d92e61ebd68e925fab
+    image: postgres@sha256:bf0f80f355b3b05840279e6d441d5b59e824a26651350ced7a642f3677e18e42
     healthcheck:
       test: psql postgres --command "select 1" -U postgres
     ports:
