@@ -13,7 +13,7 @@
     "pact:publish": "pact-broker publish pacts --consumer-app-version=\"$(./node_modules/.bin/absolute-version-from-git-tag)\" --auto-detect-version-properties --broker-base-url=http://localhost:8000"
   },
   "devDependencies": {
-    "@pact-foundation/pact": "15.0.1",
+    "@pact-foundation/pact": "16.2.0",
     "eslint": "9.39.2",
     "jest": "30.2.0",
     "absolute-version": "2.0.0"
