@@ -6,7 +6,7 @@ const {
 const {
   receiveProductUpdate,
 } = require("../../../src/product/product.service");
-const { like, term } = Matchers;
+const { like, regex } = Matchers;
 
 const path = require("path");
 
@@ -29,10 +29,7 @@ describe("product event handler", () => {
           id: like("some-uuid-1234-5678"),
           type: like("Product Range"),
           name: like("Some Product"),
-          event: term({
-            generate: "UPDATED",
-            matcher: "^(CREATED|UPDATED|DELETED)$",
-          }),
+          event: regex("^(CREATED|UPDATED|DELETED)$", "UPDATED"),
         })
         .withMetadata({
           topic: "products",
